@@ -5,3 +5,17 @@ canvas {
     left: 0;
     top: 0;
 }
+
+.toolbar {
+    flex-direction: column;
+    position: fixed;
+    display: flex;
+    z-index: 2;
+    left: 10px;
+    top: 10px;
+}
+    .toolbar .button {
+        background-color: #DDD;
+        color: #000;
+        border: 0;
+    }

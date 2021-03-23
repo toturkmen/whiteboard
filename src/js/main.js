@@ -1,16 +1,20 @@
 import * as p5 from "p5/lib/p5.min.js";
 
+import toolbar from './ui/toolbar.js';
+import tools from './tools.js';
+
+import 'normalize.css';
 import './../css/main.css';
 
-let sketch = (s) => {
+var sketch = (s) => {
     s.setup = () => {
+        s.clearStorage();
         s.createCanvas(window.innerWidth, window.innerHeight);
-        s.strokeWeight(2);
+
+        toolbar(s);
     }
     s.draw = () => {
-        if (s.mouseIsPressed) {
-            s.line(s.mouseX, s.mouseY, s.pmouseX, s.pmouseY);
-        }
+        tools(s);
     }
 }
 
