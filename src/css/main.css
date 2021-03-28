@@ -19,3 +19,17 @@ canvas {
         color: #000;
         border: 0;
     }
+
+.timeline {
+    flex-direction: column;
+    position: fixed;
+    display: flex;
+    bottom: 10px;
+    left: 10px;
+    z-index: 2;
+}
+    .timeline .button {
+        background-color: #DDD;
+        color: #000;
+        border: 0;
+    }
