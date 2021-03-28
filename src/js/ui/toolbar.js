@@ -1,6 +1,6 @@
 export default function toolbar (s) {
     let toolbar = s.createDiv().class('toolbar');
-    ['pencil', 'eraser'].map ((tool) => {
+    ['pencil', 'ellipse', 'rectangle', 'eraser'].map ((tool) => {
         toolbar.child(
             s.createButton(tool)
                 .class('button')
