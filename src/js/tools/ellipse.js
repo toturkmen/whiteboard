@@ -13,12 +13,15 @@ export default function circle (s) {
         }
     } else {
         if (drawingMode) {
-            s.storeItem('timeline', s.append(s.getItem('timeline'), {
-                tool: 'ellipse',
-                properties: {
-                    x, y, w: s.pmouseX, h: s.pmouseY
-                }
-            }));
+            if (x != s.pmouseX && y != s.pmouseY) {
+                s.storeItem('timeline', s.append(s.getItem('timeline'), {
+                    tool: 'ellipse',
+                    properties: {
+                        x, y, w: s.pmouseX, h: s.pmouseY
+                    },
+                    visible: true
+                }));
+            }
             redraw(s);
             drawingMode = false;
             x, y = 0;
