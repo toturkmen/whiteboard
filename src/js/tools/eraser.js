@@ -1,5 +1,13 @@
+import redraw from './../redraw.js';
+
 export default function eraser (s) {
-    s.erase();
-    s.ellipse(s.mouseX, s.mouseY, 20);
-    s.noErase();
+    if (s.mouseIsPressed) {
+        s.storeItem('timeline', s.append(s.getItem('timeline'), {
+            tool: 'eraser',
+            properties: {
+                x: s.mouseX, y: s.mouseY, r: 20
+            }
+        }));
+        redraw(s);
+    }
 };
