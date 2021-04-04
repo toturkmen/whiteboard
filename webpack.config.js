@@ -5,23 +5,24 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = {
-    entry: './src/js/main.js',
+const client = {
+    target: 'web',
+    entry: './src/client/js/main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/bundle.js'
+        filename: 'client/js/bundle.js'
     },
     devServer: {
         contentBase: './dist'
     },
     plugins: [
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './src/index.html',
+            filename: 'client/index.html',
+            template: './src/client/index.html',
             inject: false
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/bundle.css'
+            filename: 'client/css/bundle.css'
         })
     ],
     module: {
@@ -51,3 +52,40 @@ module.exports = {
         ]
     },
 };
+
+const server = {
+    target: 'node',
+    entry: './src/server/main.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'server/bundle.js'
+    },
+    devServer: {
+        contentBase: './dist'
+    },
+    plugins: [
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+        ]
+    },
+    optimization: {
+        minimizer: [
+            new TerserPlugin({
+                extractComments: false
+            })
+        ]
+    },
+};
+
+module.exports = [client, server];
