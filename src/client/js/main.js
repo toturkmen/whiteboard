@@ -2,6 +2,7 @@ import * as p5 from "p5/lib/p5.min.js";
 import io from 'socket.io-client';
 
 import toolbar from './ui/toolbar.js';
+import toolOptions from './ui/toolOptions';
 import timeline from './ui/timeline.js';
 import tools from './tools.js';
 import redraw from "./redraw.js";
@@ -26,6 +27,7 @@ var sketch = (s) => {
         s.storeItem('timeline', []);
 
         toolbar(s);
+        toolOptions(s);
         timeline(s);
     }
     s.draw = () => {
