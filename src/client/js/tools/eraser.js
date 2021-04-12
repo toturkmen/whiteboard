@@ -4,18 +4,22 @@ let drawingMode = false;
 
 export default function eraser (s) {
     if (s.mouseIsPressed) {
+        let r = 10;
+        if (s.getItem('stroke-weight')) {
+            r *= s.getItem('stroke-weight') / 4;
+        }
         if (! drawingMode) {
             s.storeItem('timeline', s.append(s.getItem('timeline'), {
                 tool: 'eraser',
                 properties: [
-                    { x: s.mouseX, y: s.mouseY, r: 20 }
+                    { x: s.mouseX, y: s.mouseY, r }
                 ],
                 visible: true
             }));
             drawingMode = true;
         } else {
             let timeline = s.getItem('timeline');
-            timeline[timeline.length - 1].properties.push ({ x: s.mouseX, y: s.mouseY, r: 20 });
+            timeline[timeline.length - 1].properties.push ({ x: s.mouseX, y: s.mouseY, r });
             s.storeItem('timeline', timeline);
         }
         redraw(s);

@@ -9,6 +9,15 @@ export default function circle (s) {
             drawingMode = true;
         } else {
             redraw(s);
+            if (s.getItem('stroke')) {
+                s.stroke(s.getItem('stroke'));
+            }
+            if (s.getItem('stroke-weight')) {
+                s.strokeWeight(s.getItem('stroke-weight'));
+            }
+            if (s.getItem('fill')) {
+                s.fill(s.getItem('fill'));
+            }
             s.ellipse(x, y, s.pmouseX, s.pmouseY);
         }
     } else {
@@ -17,7 +26,12 @@ export default function circle (s) {
                 s.storeItem('timeline', s.append(s.getItem('timeline'), {
                     tool: 'ellipse',
                     properties: {
-                        x, y, w: s.pmouseX, h: s.pmouseY
+                        x, y, w: s.pmouseX, h: s.pmouseY,
+                        options: {
+                            stroke: s.getItem('stroke'),
+                            strokeWeight: s.getItem('stroke-weight'),
+                            fill: s.getItem('fill')
+                        }
                     },
                     visible: true
                 }));

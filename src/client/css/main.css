@@ -33,3 +33,17 @@ canvas {
         color: #000;
         border: 0;
     }
+
+.tool-options {
+    flex-direction: column;
+    position: fixed;
+    display: flex;
+    right: 10px;
+    z-index: 2;
+    top: 10px;
+}
+    .tool-options .button {
+        background-color: #DDD;
+        color: #000;
+        border: 0;
+    }
