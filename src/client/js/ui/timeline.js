@@ -1,10 +1,14 @@
 import redraw from './../redraw.js';
 
 export default function timeline (s) {
-    s.createDiv().class('timeline')
+    s.createDiv()
+        .id('timeline')
+        .class('btn-group')
         .child(
-            s.createButton('undo')
-                .class('button')
+            s.createButton([
+                'Undo'
+            ])
+                .class('btn btn-secondary btn-sm rounded-0 m-0')
                 .mousePressed(() => {
                     let timeline = s.getItem('timeline');
                     for (let index = 1; index <= timeline.length; index++) {
@@ -18,8 +22,10 @@ export default function timeline (s) {
                 })
         )
         .child(
-            s.createButton('redo')
-                .class('button')
+            s.createButton([
+                'Redo'
+            ])
+                .class('btn btn-secondary btn-sm rounded-0 m-0')
                 .mousePressed(() => {
                     let timeline = s.getItem('timeline');
                     for (let index = 0; index < timeline.length; index++) {

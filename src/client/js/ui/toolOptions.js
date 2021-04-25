@@ -12,8 +12,9 @@ export default function toolOptions (s) {
             .changed(() => s.storeItem('fill', fill.value()));
 
     let toolOptions =
-        s.createDiv().class('tool-options')
-            .child(stroke)
-            .child(strokeWeight)
-            .child(fill);
+        s.createDiv()
+            .id('tool-options')
+                .child(stroke)
+                .child(strokeWeight)
+                .child(fill);
 };
