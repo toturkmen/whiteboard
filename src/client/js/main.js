@@ -1,13 +1,15 @@
+import 'bootstrap/dist/js/bootstrap.bundle.js';
 import * as p5 from "p5/lib/p5.min.js";
 import io from 'socket.io-client';
 
+import navbar from './ui/navbar.js';
 import toolbar from './ui/toolbar.js';
 import toolOptions from './ui/toolOptions';
 import timeline from './ui/timeline.js';
 import tools from './tools.js';
 import redraw from "./redraw.js";
 
-import 'normalize.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './../css/main.css';
 
 var sketch = (s) => {
@@ -26,6 +28,7 @@ var sketch = (s) => {
         s.createCanvas(window.innerWidth, window.innerHeight);
         s.storeItem('timeline', []);
 
+        navbar(s);
         toolbar(s);
         toolOptions(s);
         timeline(s);

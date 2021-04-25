@@ -6,44 +6,30 @@ canvas {
     top: 0;
 }
 
-.toolbar {
+#navbar {
+}
+
+#toolbar {
     flex-direction: column;
     position: fixed;
     display: flex;
     z-index: 2;
     left: 10px;
-    top: 10px;
+    top: 66px;
 }
-    .toolbar .button {
-        background-color: #DDD;
-        color: #000;
-        border: 0;
-    }
 
-.timeline {
-    flex-direction: column;
+#timeline {
     position: fixed;
-    display: flex;
     bottom: 10px;
     left: 10px;
     z-index: 2;
 }
-    .timeline .button {
-        background-color: #DDD;
-        color: #000;
-        border: 0;
-    }
 
-.tool-options {
+#tool-options {
     flex-direction: column;
     position: fixed;
     display: flex;
     right: 10px;
     z-index: 2;
-    top: 10px;
+    top: 66px;
 }
-    .tool-options .button {
-        background-color: #DDD;
-        color: #000;
-        border: 0;
-    }
