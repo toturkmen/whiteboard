@@ -14,7 +14,11 @@ import './../css/main.css';
 
 var sketch = (s) => {
     s.setup = () => {
-        s.socket = io();
+        s.socket = io({
+            query: {
+                room: window.location.pathname.split('/')[1]
+            }
+        });
         s.socket.on('timeline', (data) => {
             s.storeItem('timeline', s.getItem('timeline'));
             redraw(s);
