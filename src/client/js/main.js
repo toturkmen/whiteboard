@@ -1,10 +1,15 @@
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import * as p5 from "p5/lib/p5.min.js";
 import io from 'socket.io-client';
 
+import welcome from './ui/welcome.js';
 import navbar from './ui/navbar.js';
 import toolbar from './ui/toolbar.js';
-import toolOptions from './ui/toolOptions';
+import toolOptions from './ui/toolOptions.js';
 import timeline from './ui/timeline.js';
 import tools from './tools.js';
 import redraw from "./redraw.js";
@@ -32,6 +37,7 @@ var sketch = (s) => {
         s.createCanvas(window.innerWidth, window.innerHeight);
         s.storeItem('timeline', []);
 
+        welcome(s);
         navbar(s);
         toolbar(s);
         toolOptions(s);
