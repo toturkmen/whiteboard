@@ -40,7 +40,6 @@ var sketch = (s) => {
     s.draw = () => {
         s.socket.emit('timeline', s.getItem('timeline'));
         tools(s);
-        // console.log (s.getItem('timeline'));
     }
 }
 
