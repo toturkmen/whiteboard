@@ -46,6 +46,12 @@ export default function redraw (s) {
                     s.strokeWeight(1);
                     s.noFill();
                 } break;
+                case 'text': {
+                    s.fill(0);
+                    s.textSize(16);
+                    s.text(t.properties.value, t.properties.x, t.properties.y);
+                    s.noFill();
+                } break;
                 case 'eraser': {
                     s.erase();
                     s.ellipseMode(s.CENTER);

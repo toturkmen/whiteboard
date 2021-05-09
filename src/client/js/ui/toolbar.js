@@ -4,7 +4,7 @@ export default function toolbar (s) {
             .id('toolbar')
             .class('btn-group');
 
-    ['pencil', 'ellipse', 'rectangle', 'eraser'].map ((tool) => {
+    ['pencil', 'ellipse', 'rectangle', 'text', 'eraser'].map ((tool) => {
         toolbar.child(
             s.createButton(tool)
                 .class('btn btn-secondary btn-sm rounded-0 m-0')
