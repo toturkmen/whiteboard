@@ -6,8 +6,7 @@ canvas {
     top: 0;
 }
 
-#navbar {
-}
+#navbar {}
 
 #toolbar {
     flex-direction: column;
@@ -17,6 +16,23 @@ canvas {
     left: 10px;
     top: 66px;
 }
+    #toolbar .btn {
+        transition: background-color .2s;
+        background-color: #DAE0E5;
+        border-color: #DAE0E5;
+        padding: 11px;
+    }
+    #toolbar .btn:hover {
+        background-color: #C6CBD0;
+    }
+    #toolbar .btn:first-child {
+        border-top-right-radius: 10px !important;
+        border-top-left-radius: 10px !important;
+    }
+    #toolbar .btn:last-child {
+        border-bottom-right-radius: 10px !important;
+        border-bottom-left-radius: 10px !important;
+    }
 
 #timeline {
     position: fixed;
@@ -24,6 +40,23 @@ canvas {
     left: 10px;
     z-index: 2;
 }
+    #timeline .btn {
+        transition: background-color .2s;
+        background-color: #DAE0E5;
+        border-color: #DAE0E5;
+        padding: 11px;
+    }
+    #timeline .btn:hover {
+        background-color: #C6CBD0;
+    }
+    #timeline .btn:first-child {
+        border-bottom-left-radius: 10px !important;
+        border-top-left-radius: 10px !important;
+    }
+    #timeline .btn:last-child {
+        border-bottom-right-radius: 10px !important;
+        border-top-right-radius: 10px !important;
+    }
 
 #tool-options {
     flex-direction: column;

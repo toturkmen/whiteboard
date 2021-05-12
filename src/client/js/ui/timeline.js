@@ -5,9 +5,7 @@ export default function timeline (s) {
         .id('timeline')
         .class('btn-group')
         .child(
-            s.createButton([
-                'Undo'
-            ])
+            s.createButton('')
                 .class('btn btn-secondary btn-sm rounded-0 m-0')
                 .mousePressed(() => {
                     let timeline = s.getItem('timeline');
@@ -20,11 +18,13 @@ export default function timeline (s) {
                     s.storeItem('timeline', timeline);
                     redraw(s);
                 })
+                .child(
+                    s.createImg(`/images/svg/undo.svg`, 'undo')
+                        .attribute('height', '24px')
+                )
         )
         .child(
-            s.createButton([
-                'Redo'
-            ])
+            s.createButton('')
                 .class('btn btn-secondary btn-sm rounded-0 m-0')
                 .mousePressed(() => {
                     let timeline = s.getItem('timeline');
@@ -37,5 +37,9 @@ export default function timeline (s) {
                     s.storeItem('timeline', timeline);
                     redraw(s);
                 })
+                .child(
+                    s.createImg(`/images/svg/redo.svg`, 'redo')
+                        .attribute('height', '24px')
+                )
         )
 };

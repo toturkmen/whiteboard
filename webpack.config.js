@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const client = {
@@ -23,7 +24,12 @@ const client = {
         }),
         new MiniCssExtractPlugin({
             filename: 'client/css/bundle.css'
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, 'src/client/images'), to: path.resolve(__dirname, 'dist/client/images') },
+            ],
+        }),
     ],
     module: {
         rules: [
