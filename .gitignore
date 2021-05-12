@@ -7,3 +7,6 @@
 
 # Dependency
 node_modules/
+
+# Dist
+dist/
