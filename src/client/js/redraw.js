@@ -48,7 +48,7 @@ export default function redraw (s) {
                 } break;
                 case 'text': {
                     s.fill(0);
-                    s.textSize(16);
+                    s.textSize(t.properties.options.fontSize);
                     s.text(t.properties.value, t.properties.x, t.properties.y);
                     s.noFill();
                 } break;
