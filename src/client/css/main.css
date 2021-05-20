@@ -59,10 +59,34 @@ canvas {
     }
 
 #tool-options {
+    background-color: #DAE0E5;
+    border-color: #DAE0E5;
     flex-direction: column;
+    padding: 0 11px 11px;
+    border-radius: 10px;
     position: fixed;
     display: flex;
     right: 10px;
     z-index: 2;
     top: 66px;
+}
+    #tool-options .title {
+        border-bottom: 1px solid #999;
+        margin: 10px 0 5px;
+        font-size: 14px;
+    }
+    #tool-options [type="color"] {
+        background-color: #DAE0E5;
+        box-shadow: none;
+        outline: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+
+.text-tool {
+    background-color: transparent;
+    border-style: dotted;
+    box-shadow: none;
+    outline: 0;
 }
