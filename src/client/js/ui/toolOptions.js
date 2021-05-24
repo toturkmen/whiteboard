@@ -19,8 +19,15 @@ export default function toolOptions (s) {
             .changed(() => s.storeItem('fill', fill.value()));
     
     let fontSize =
-        s.createSlider(8, 72, 16)
-            .changed(() => s.storeItem('font-size', fontSize.value()));
+        s.createSelect()
+            .changed(() => {
+                s.storeItem('font-size', fontSize.value());
+                $('.text-tool').css('font-size', fontSize.value());
+            }); 
+    [12, 16, 20, 24, 32, 48, 72].map(size => {
+        fontSize.option(`${size}px`);
+    });
+    s.storeItem('font-size', 12);
 
     let toolOptions =
         s.createDiv()
