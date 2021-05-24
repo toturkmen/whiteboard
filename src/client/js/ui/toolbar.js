@@ -9,10 +9,15 @@ export default function toolbar (s) {
             s.createButton('')
                 .class('btn btn-secondary btn-sm rounded-0 m-0')
                 .mousePressed(() => {
-                    s.storeItem('selected-tool',tool);
-                    $('#tool-options')
-                        .removeAttr('class')
-                        .addClass(tool + '-tool-options');
+                    let toolInterval = setInterval (() => {
+                        if (! s.mouseIsPressed) {
+                            s.storeItem('selected-tool',tool);
+                            $('#tool-options')
+                                .removeAttr('class')
+                                .addClass(tool + '-tool-options');
+                            clearInterval(toolInterval);
+                        }
+                    }, 250);
                 })
                 .child(
                     s.createImg(`/images/svg/${tool}.svg`, tool)

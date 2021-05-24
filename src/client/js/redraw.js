@@ -47,6 +47,9 @@ export default function redraw (s) {
                     s.noFill();
                 } break;
                 case 'text': {
+                    t.properties.options.fontSize = parseInt(t.properties.options.fontSize);
+                    t.properties.y += t.properties.options.fontSize + 8;
+                    t.properties.x += 4;
                     s.fill(0);
                     s.textSize(t.properties.options.fontSize);
                     s.text(t.properties.value, t.properties.x, t.properties.y);
