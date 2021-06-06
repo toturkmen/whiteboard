@@ -1,12 +1,12 @@
 import redraw from './../redraw.js';
 
-let drawingMode = false;
+let drawingMode = false, drawing = {};
 
 export default function pencil (s) {
     if (s.mouseIsPressed) {
         if (s.mouseX != s.pmouseX || s.mouseY != s.pmouseY) {
             if (! drawingMode) {
-                s.storeItem('timeline', s.append(s.getItem('timeline'), {
+                drawing = {
                     tool: 'pencil',
                     properties: [
                         {
@@ -18,11 +18,10 @@ export default function pencil (s) {
                         }
                     ],
                     visible: true
-                }));
+                };
                 drawingMode = true;
             } else {
-                let timeline = s.getItem('timeline');
-                timeline[timeline.length - 1].properties.push (
+                drawing.properties.push (
                     {
                         x: s.mouseX, y: s.mouseY, pX: s.pmouseX, pY: s.pmouseY,
                         options: {
@@ -31,11 +30,12 @@ export default function pencil (s) {
                         }
                     }
                 );
-                s.storeItem('timeline', timeline);
             }
-            redraw(s);
+            redraw(s, null, drawing);
         }
     } else {
+        s.socket.emit('timeline', drawing);
+        drawing = {};
         drawingMode = false;
     }
 };

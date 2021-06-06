@@ -24,9 +24,8 @@ var sketch = (s) => {
                 room: window.location.pathname.split('/')[1]
             }
         });
-        s.socket.on('timeline', (data) => {
-            s.storeItem('timeline', s.getItem('timeline'));
-            redraw(s);
+        s.socket.on('timeline', (timeline) => {
+            redraw(s, timeline);
         });
 
         s.clearStorage();
@@ -44,7 +43,6 @@ var sketch = (s) => {
         timeline(s);
     }
     s.draw = () => {
-        s.socket.emit('timeline', s.getItem('timeline'));
         tools(s);
     }
 }
