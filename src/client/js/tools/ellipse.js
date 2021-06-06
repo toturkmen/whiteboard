@@ -23,7 +23,7 @@ export default function circle (s) {
     } else {
         if (drawingMode) {
             if (x != s.pmouseX && y != s.pmouseY) {
-                s.storeItem('timeline', s.append(s.getItem('timeline'), {
+                s.socket.emit('timeline', {
                     tool: 'ellipse',
                     properties: {
                         x, y, w: s.pmouseX, h: s.pmouseY,
@@ -34,9 +34,8 @@ export default function circle (s) {
                         }
                     },
                     visible: true
-                }));
+                });
             }
-            redraw(s);
             drawingMode = false;
             x, y = 0;
         }

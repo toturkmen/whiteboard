@@ -14,7 +14,7 @@ export default function text (s) {
     }
     if (s.keyIsPressed && s.keyCode == 13 && input != null) {
         if (input.value()) {
-            s.storeItem('timeline', s.append(s.getItem('timeline'), {
+            let txt = {
                 tool: 'text',
                 properties: {
                     x, y, value: input.value(),
@@ -23,10 +23,11 @@ export default function text (s) {
                     }
                 },
                 visible: true
-            }));
+            };
+            s.socket.emit('timeline', txt);
+            redraw(s, null, txt)
         }
         input.remove();
-        redraw(s);
         drawingMode = false;
         input = null;
     }

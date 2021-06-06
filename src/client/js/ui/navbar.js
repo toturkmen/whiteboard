@@ -32,7 +32,7 @@ export default function navbar (s) {
                                                     .mousePressed(() => {
                                                         s.createFileInput((file) => {
                                                             if (file.subtype === 'json') {
-                                                                s.storeItem('timeline', file.data);
+                                                                s.socket.emit('load', file.data);
                                                             }
                                                             else {
                                                                 window.alert('File type error!');
@@ -54,6 +54,24 @@ export default function navbar (s) {
                                                     .mousePressed(() => {
                                                         s.saveJSON(s.getItem('timeline'), 'whiteboard.timeline.json');
                                                     })
+                                            )
+                                    )
+                            )
+                            .child(
+                                s.createElement('li')
+                                    .class('nav-item dropdown')
+                                    .child(
+                                        s.createA('#', 'Help')
+                                            .class('nav-link dropdown-toggle')
+                                            .attribute('data-toggle', 'dropdown')
+                                            .attribute('role', 'button')
+                                    )
+                                    .child(
+                                        s.createDiv()
+                                            .class('dropdown-menu')
+                                            .child(
+                                                s.createA('https://github.com/toturkmen/whiteboard', 'Github Repository', '_blank')
+                                                    .class('dropdown-item'),
                                             )
                                     )
                             )

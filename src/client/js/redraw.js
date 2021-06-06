@@ -1,6 +1,16 @@
-export default function redraw (s) {
+let localTimeline = [];
+
+export default function redraw (s, timeline, extra) {
+    if (! timeline) {
+        timeline = localTimeline;
+    }
+    if (extra) {
+        timeline.push(extra);
+    }
+    localTimeline = timeline;
+    s.storeItem('timeline', timeline);
     s.background(255);
-    for (let t of s.getItem('timeline')) {
+    for (let t of timeline) {
         if (t.visible) {
             switch (t.tool) {
                 case 'pencil': {

@@ -1,6 +1,6 @@
 import redraw from './../redraw.js';
 
-let drawingMode = false;
+let erasingMode = false, erasing = {};
 
 export default function eraser (s) {
     if (s.mouseIsPressed) {
@@ -8,35 +8,24 @@ export default function eraser (s) {
         if (s.getItem('stroke-weight')) {
             r *= s.getItem('stroke-weight') / 4;
         }
-        if (! drawingMode) {
-            s.storeItem('timeline', s.append(s.getItem('timeline'), {
+        if (! erasingMode) {
+            erasing = {
                 tool: 'eraser',
                 properties: [
                     { x: s.mouseX, y: s.mouseY, r }
                 ],
                 visible: true
-            }));
-            drawingMode = true;
+            };
+            erasingMode = true;
         } else {
-            let timeline = s.getItem('timeline');
-            timeline[timeline.length - 1].properties.push ({ x: s.mouseX, y: s.mouseY, r });
-            s.storeItem('timeline', timeline);
+            erasing.properties.push ({ x: s.mouseX, y: s.mouseY, r });
         }
-        redraw(s);
+        redraw(s, null, erasing);
     } else {
-        if (drawingMode) {
-            let timeline = s.getItem('timeline'), lastEraser = timeline[timeline.length - 1], faulty = true;
-            for (let i = 1; i < timeline[timeline.length - 1].properties.length; i++) {
-                if (lastEraser.properties[i - 1].x != lastEraser.properties[i].x && lastEraser.properties[i - 1].y != lastEraser.properties[i].y) {
-                    faulty = false;
-                    break;
-                }
-            }
-            if (faulty) {
-                timeline.pop();
-                s.storeItem('timeline', timeline);
-            }
-            drawingMode = false;
+        if (erasingMode) {
+            s.socket.emit('timeline', erasing);
+            erasing = {};
+            erasingMode = false;
         }
     }
 };
