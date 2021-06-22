@@ -1,14 +1,7 @@
 export default function toolOptions (s) {
     let stroke =
-        s.createDiv()
-            .class('stroke-option')
-            .child(
-                s.createDiv('Stroke').class('title')
-            )
-            .child(
-                s.createColorPicker('#000000')
-                    .changed(() => s.storeItem('stroke', stroke.value()))
-            );
+        s.createColorPicker('#000000')
+            .changed(() => s.storeItem('stroke', stroke.value()));
 
     let strokeWeight =
         s.createSlider(1, 100, 2)
@@ -32,6 +25,7 @@ export default function toolOptions (s) {
     let toolOptions =
         s.createDiv()
             .id('tool-options')
+            .child(s.createDiv('Stroke').class('title'))
             .child(stroke)
             .child(s.createDiv('Stroke Weight').class('title'))
             .child(strokeWeight)
