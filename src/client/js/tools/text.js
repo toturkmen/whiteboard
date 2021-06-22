@@ -9,6 +9,7 @@ export default function text (s) {
             s.createInput()
                 .class('text-tool')
                 .style('font-size', s.getItem('font-size'))
+                .style('color', s.getItem('text-color'))
                 .position(s.mouseX, s.mouseY);
         drawingMode = true;
     }
@@ -20,6 +21,7 @@ export default function text (s) {
                     x, y, value: input.value(),
                     options: {
                         fontSize: s.getItem('font-size'),
+                        textColor: s.getItem('text-color'),
                     }
                 },
                 visible: true

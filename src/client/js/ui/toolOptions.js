@@ -16,11 +16,15 @@ export default function toolOptions (s) {
             .changed(() => {
                 s.storeItem('font-size', fontSize.value());
                 $('.text-tool').css('font-size', fontSize.value());
-            }); 
+            });
     [12, 16, 20, 24, 32, 48, 72].map(size => {
         fontSize.option(`${size}px`);
     });
     s.storeItem('font-size', 12);
+
+    let textColor =
+        s.createColorPicker('#000')
+            .changed(() => s.storeItem('text-color', textColor.value()));
 
     let toolOptions =
         s.createDiv()
@@ -32,5 +36,7 @@ export default function toolOptions (s) {
             .child(s.createDiv('Fill').class('title'))
             .child(fill)
             .child(s.createDiv('Font Size').class('title'))
-            .child(fontSize);
+            .child(fontSize)
+            .child(s.createDiv('Text Color').class('title'))
+            .child(textColor);
 };
