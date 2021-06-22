@@ -60,7 +60,10 @@ export default function redraw (s, timeline, extra) {
                     t.properties.options.fontSize = parseInt(t.properties.options.fontSize);
                     t.properties.y += t.properties.options.fontSize + 8;
                     t.properties.x += 4;
-                    s.fill(0);
+                    s.fill('#000');
+                    if (t.properties.options.textColor) {
+                        s.fill(t.properties.options.textColor);
+                    }
                     s.textSize(t.properties.options.fontSize);
                     s.text(t.properties.value, t.properties.x, t.properties.y);
                     s.noFill();
